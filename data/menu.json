@@ -1,0 +1,10 @@
+{
+  "index": {
+    "title": "Hello Universe",
+    "content": "Welcome to our own framework"
+  },
+  "about": {
+    "title": "About",
+    "content": "This is a super content site."
+  }
+}

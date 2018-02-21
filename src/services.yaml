@@ -1,0 +1,32 @@
+parameters:
+  template_dir: '../templates'
+  data_dir: '../data'
+
+services:
+  loader:
+    class: Twig_Loader_Filesystem
+    arguments: ['%template_dir%']
+
+  twig:
+    class: Twig_Environment
+    arguments: ['@loader']
+
+  adapter:
+    class: League\Flysystem\Adapter\Local
+    arguments: ['%data_dir%']
+
+  filesystem:
+    class: League\Flysystem\Filesystem
+    arguments: ['@adapter']
+
+  contact_controller:
+    class: Weekend\Controller\ContactController
+    arguments: ['@twig']
+
+  config_service:
+    class: Weekend\Service\ConfigService
+    arguments: ['@filesystem']
+
+  basic_page_controller:
+    class: Weekend\Controller\BasicPageController
+    arguments: ['@twig', '@config_service']

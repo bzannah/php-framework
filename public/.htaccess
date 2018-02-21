@@ -1,0 +1,9 @@
+# Web server configuration
+
+RewriteEngine On # Enable re-write module
+
+# check that request is not for an existing file (img, css, js etc)
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# Route everything else to index.php
+RewriteRule . index.php [L]
